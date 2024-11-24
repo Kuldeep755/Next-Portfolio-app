@@ -49,7 +49,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
+    title: "Currently building a Next Js E-commerce web Application",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -80,27 +80,27 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
+    title: "Tournament registration Flow and Create Tournament Flow",
+    des: "Designed and implemented the tournament registration flow using Next.js and Redux for efficient state management, ensuring seamless user interaction and robust application performance",
+    img: "/lysto_tournament.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
+    link: "https://lysto.gg/tournaments/upcoming",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
+    title: "Lysto Playtester Controls Feature ",
+    des: "Developed the Playtester Controls feature, enhancing user control and management.",
+    img: "playtest_controls.png",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
+    link: "https://lysto.gg/playtest-app-download",
   },
   {
     id: 4,
     title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
+    des: "Developed the 'Create Community' flow and 'Community Profile' page using Next.js (v14), Redux, Tailwind CSS, and Material-UI, enhancing community-building functionality and user engagement on the platform.",
+    img: "/lysto_community_page.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "/ui.apple.com",
+    link: "https://lysto.gg/communities",
   },
 ];
 
