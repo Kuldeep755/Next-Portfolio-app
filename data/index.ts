@@ -148,7 +148,7 @@ export const socialMedia = [
   {
     id: 3,
     img: "/wha.svg",
-    link: `https://wa.me/${8875522755}?text=${encodeURIComponent(
+    link: `https://wa.me/${918875522755}?text=${encodeURIComponent(
       "Hello, I would like to connect with you!"
     )}`,
   },
