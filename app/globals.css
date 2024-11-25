@@ -81,21 +81,25 @@
 @layer utilities {
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
-  }@layer base {
-  * {
-    @apply border-border !scroll-smooth;
   }
-  body {
-    @apply bg-background text-foreground;
+  @layer base {
+    * {
+      @apply border-border !scroll-smooth;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+    button {
+      @apply active:outline-none;
+    }
   }
-  button {
-    @apply active:outline-none;
+  .testBorder {
+    border: 1px solid red;
   }
-}
 
-@layer utilities {
-  .heading {
-    @apply font-bold text-4xl md:text-5xl text-center;
+  @layer utilities {
+    .heading {
+      @apply font-bold text-4xl md:text-5xl text-center;
+    }
   }
-}
 }
