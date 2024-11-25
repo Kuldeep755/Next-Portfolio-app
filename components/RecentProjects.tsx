@@ -7,6 +7,7 @@ import { PinContainer } from "./ui/Pin";
 import { useState } from "react";
 import { Router } from "next/router";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const RecentProjects = () => {
   const router = useRouter();
@@ -32,11 +33,19 @@ const RecentProjects = () => {
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <Image width={100} height={100} src="/bg.png" alt="bgimg" />
                 </div>
-                <img
-                  src={item.img}
+                <Image
+                  src={
+                    item.img.startsWith("/") || item.img.startsWith("http")
+                      ? item.img
+                      : ``
+                  }
                   alt="cover"
+                  // width={100}
+                  // height={100}
+                  // layout="responsive"
+                  fill={true}
                   className="z-10 absolute bottom-0"
                 />
               </div>
@@ -65,7 +74,12 @@ const RecentProjects = () => {
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <Image
+                        src={icon}
+                        alt="icon5"
+                        className="p-2"
+                        layout="fill"
+                      />
                     </div>
                   ))}
                 </div>
