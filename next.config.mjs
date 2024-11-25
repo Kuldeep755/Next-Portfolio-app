@@ -1,40 +1,19 @@
-import {withSentryConfig} from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
 export default withSentryConfig(nextConfig, {
-// For all available options, see:
-// https://github.com/getsentry/sentry-webpack-plugin#options
-
-// Suppresses source map uploading logs during build
-silent: true,
-org: "javascript-mastery",
-project: "javascript-nextjs",
+  // Sentry options
+  authToken: process.env.SENTRY_AUTH_TOKEN,  // Ensure this token is correct
+  silent: true,
+  org: 'm-tech-pe',  // Your Sentry organization slug (ensure it's correct, case-sensitive)
+  project: 'javascript-nextjs',  // Your Sentry project slug (ensure it's correct)
 }, {
-// For all available options, see:
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-// Upload a larger set of source maps for prettier stack traces (increases build time)
-widenClientFileUpload: true,
-
-// Transpiles SDK to be compatible with IE11 (increases bundle size)
-transpileClientSDK: true,
-
-// Uncomment to route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-// This can increase your server load as well as your hosting bill.
-// Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-// side errors will fail.
-// tunnelRoute: "/monitoring",
-
-// Hides source maps from generated client bundles
-hideSourceMaps: true,
-
-// Automatically tree-shake Sentry logger statements to reduce bundle size
-disableLogger: true,
-
-// Enables automatic instrumentation of Vercel Cron Monitors.
-// See the following for more information:
-// https://docs.sentry.io/product/crons/
-// https://vercel.com/docs/cron-jobs
-automaticVercelMonitors: true,
+  // Additional Sentry configuration
+  widenClientFileUpload: true,  // Optional: for larger source maps
+  transpileClientSDK: true,  // Optional: if you need to support IE11
+  hideSourceMaps: true,  // Optional: hides source maps from bundles
+  disableLogger: true,  // Optional: reduces bundle size by tree-shaking Sentry logs
+  automaticVercelMonitors: true,  // Optional: for automatic instrumentation of Vercel Cron Monitors
 });
