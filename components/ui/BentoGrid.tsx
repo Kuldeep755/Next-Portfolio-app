@@ -11,6 +11,7 @@ import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 
 export const BentoGrid = ({
   className,
@@ -67,6 +68,12 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
+    trackEvent({
+      action: "click",
+      category: "Button",
+      label: "Copy email",
+      value: 1,
+    });
     const text = "jatkuldeep945@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
