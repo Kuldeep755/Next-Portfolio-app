@@ -1,32 +1,61 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import {
+  FaHome,
+  FaUser,
+  FaClipboardList,
+  FaEnvelope,
+  FaProjectDiagram,
+} from "react-icons/fa";
 
 export const FloatingNav = () => {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu visibility
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 w-[90%] !bg-opacity-0 mt-1">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 w-[100%] !bg-opacity-0 mt-1 relative md:w-[100%]">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
+        {/* Logo */}
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
           KJ
         </span>
 
-        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex md:space-x-8">
+          {[
+            { name: "Home", path: "/", icon: <FaHome /> },
+            { name: "About", path: "/about", icon: <FaUser /> },
+            { name: "Skills", path: "/skills", icon: <FaClipboardList /> },
+            {
+              name: "Experience",
+              path: "/experience",
+              icon: <FaClipboardList />,
+            },
+            { name: "Contact", path: "/contact", icon: <FaEnvelope /> },
+            { name: "Project", path: "/project", icon: <FaProjectDiagram /> },
+          ].map(({ name, path, icon }) => (
+            <a
+              key={name}
+              onClick={() => router.push(path)}
+              className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500 cursor-pointer transition-all"
+            >
+              {icon}
+              <span>{name}</span>
+            </a>
+          ))}
+        </div>
+
+        {/* User Avatar & Mobile Menu Toggle */}
+        <div className="flex items-center md:order-2 space-x-3 ">
           <button
             type="button"
             className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="user-dropdown"
-            data-dropdown-placement="bottom"
           >
-            <span className="sr-only">Open user menu</span>
             <img
               className="w-8 h-8 rounded-full"
               src="/deep.jpeg"
@@ -34,15 +63,11 @@ export const FloatingNav = () => {
             />
           </button>
 
-          {/* User Dropdown Menu */}
-
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-user"
-            aria-expanded={isOpen}
+            className="md:hidden inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -63,64 +88,40 @@ export const FloatingNav = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu with Blurred Background */}
         <div
-          className={`${
-            isOpen ? "block" : "hidden"
-          } items-center justify-between w-full md:flex md:w-auto md:order-1 bg-opacity-0`}
-          id="navbar-user"
+          className={`fixed top-0 right-0 h-full w-[250px] bg-white/40 backdrop-blur-lg dark:bg-gray-800/40 dark:backdrop-blur-lg shadow-lg transition-all duration-300 ease-in-out transform z-10 ${
+            isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+          } md:hidden`}
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 !bg-opacity-0">
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                aria-current="page"
-              >
-                Home
-              </a>
-            </li>
-            <li
-              onClick={() => {
-                router.push("/about");
-              }}
-            >
-              <a className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">
-                About
-              </a>
-            </li>
-            <li
-              onClick={() => {
-                router.push("/skills");
-              }}
-            >
-              <a className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">
-                Skills
-              </a>
-            </li>
-            <li
-              onClick={() => {
-                router.push("/experience");
-              }}
-            >
-              <a className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">
-                Experience
-              </a>
-            </li>
-            <li>
-              <a className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">
-                Contact
-              </a>
-            </li>
-            <li
-              onClick={() => {
-                router.push("/project");
-              }}
-            >
-              <a className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 cursor-pointer">
-                Project
-              </a>
-            </li>
+          {/* Close Button */}
+          <button
+            onClick={toggleMenu}
+            className="absolute top-4 right-4 text-gray-900 dark:text-gray-300 hover:text-red-500 transition-all"
+          >
+            ✕
+          </button>
+
+          <ul className="flex flex-col mt-12 space-y-4 p-4">
+            {[
+              { name: "Home", path: "/", icon: <FaHome /> },
+              { name: "About", path: "/about", icon: <FaUser /> },
+              { name: "Skills", path: "/skills", icon: <FaClipboardList /> },
+              {
+                name: "Experience",
+                path: "/experience",
+                icon: <FaClipboardList />,
+              },
+              { name: "Contact", path: "/contact", icon: <FaEnvelope /> },
+              { name: "Project", path: "/project", icon: <FaProjectDiagram /> },
+            ].map(({ name, path, icon }) => (
+              <li key={name} onClick={() => router.push(path)}>
+                <a className="flex items-center py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 cursor-pointer transition-all">
+                  {icon}
+                  <span className="ml-2">{name}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

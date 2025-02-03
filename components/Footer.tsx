@@ -1,59 +1,77 @@
-import { FaLocationArrow } from "react-icons/fa6";
 import { socialMedia } from "@/data";
-import MagicButton from "./MagicButton";
 import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="w-full  pb-10" id="contact">
-      {/* background grid */}
-      {/* <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <Image
-          src="/footer-grid.svg"
-          alt="grid"
-          width={100}
-          height={100}
-          className="w-full h-full opacity-50 "
-        />
-      </div>
+    <footer className="w-full text-white py-2 px-4 mt-5">
+      <div className="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {/* Logo & Description */}
+        <div className="flex flex-col gap-3 text-left">
+          <h1 className="text-4xl font-extrabold">KJ</h1>
+          <p className="text-base w-[90%]">
+            Authentic and innovative. Built to the smallest detail with a focus
+            on usability and performance.
+          </p>
+          <div className="flex justify-start gap-4 mt-2">
+            {socialMedia.map((info) => (
+              <div
+                key={info.id}
+                onClick={() => window.open(info.link)}
+                className="w-10 h-10 flex justify-center items-center cursor-pointer backdrop-filter backdrop-blur-lg bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
+              >
+                <Image src={info.img} alt="icons" width={20} height={20} />
+              </div>
+            ))}
+          </div>
+        </div>
 
-      <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw]">
-          Elevate
-          <span className="text-purple"> your </span>digital presence to
-          extraordinary heights. Ready to begin?
-        </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
-          Connect with me today, and let&apos;s explore how I can bring value to
-          your team.
-        </p>
-        <a href="mailto:jatkuldeep945@gmail.com">
-          <MagicButton
-            title="Let's get in touch"
-            icon={<FaLocationArrow />}
-            position="right"
-          />
-        </a>
-      </div> */}
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-        <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © 2024 Kuldeep Jat
-        </p>
+        {/* Contact Info */}
+        <div className="text-left">
+          <h3 className="font-semibold text-lg">Get in Touch</h3>
+          <p className="mt-2 text-sm">+91 8875522755</p>
+          <p className="text-sm">jatkuldeep945@gmail.com</p>
+          <p className="text-sm">Bangalore, India</p>
+          <button className="mt-4 px-4 py-2 border border-green-400 text-white hover:bg-green-400 hover:text-black transition">
+            SEND A MESSAGE
+          </button>
+        </div>
 
-        <div className="flex items-center md:gap-3 gap-6">
-          {socialMedia.map((info) => (
-            <div
-              key={info.id}
-              onClick={() => {
-                window.open(info.link);
-              }}
-              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
-            >
-              <Image src={info.img} alt="icons" width={20} height={20} />
-            </div>
-          ))}
+        {/* Services */}
+        <div className="text-left">
+          <h3 className="font-semibold text-lg">Our Services</h3>
+          <ul className="mt-2 text-sm space-y-1">
+            <li>Website Development</li>
+            <li>Branding and Identity</li>
+            <li>SEO & Digital Marketing</li>
+            <li>Digital Images & Videos</li>
+          </ul>
+        </div>
+
+        {/* Popular Tags */}
+        <div className="text-left">
+          <h3 className="font-semibold text-lg">Popular Tags</h3>
+          <div className="flex flex-wrap justify-start mt-2 gap-2">
+            {[
+              "Health",
+              "Development",
+              "Technology",
+              "App",
+              "Education",
+              "Business",
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="border border-gray-500 px-3 py-1 text-sm hover:bg-gray-500 transition"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Copyright */}
+      <p className="text-left text-sm mt-8">Copyright © 2024 Kuldeep Jat</p>
     </footer>
   );
 };

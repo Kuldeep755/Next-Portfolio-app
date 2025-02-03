@@ -88,7 +88,7 @@ const Clients = () => {
   return (
     <div
       ref={skillRef}
-      className="p-8 bg-gray-900 text-white  relative overflow-hidden h-screen"
+      className="p-8 bg-gray-900 text-white  relative overflow-y-scroll overflow-x-hidden h-screen"
     >
       <h2 className="text-3xl font-bold text-center mb-8">My Skills</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

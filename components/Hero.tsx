@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const Hero = () => {
   const router = useRouter();
   return (
-    <div className="w-[90%] h-[90%] flex justify-center">
+    <div className="w-full h-screen flex justify-center ">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
