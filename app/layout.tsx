@@ -5,10 +5,10 @@ import "./globals.css";
 import { ThemeProvider } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Kuldeep' Portfolio",
-  description: "Modern & Minimal JS Mastery Portfolio",
+  title: "Kuldeep | Software Engineer",
+  description:
+    "Transforming ideas into powerful and scalable digital solutions with precision.",
 };
 
 export default function RootLayout({
