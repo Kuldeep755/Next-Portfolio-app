@@ -34,7 +34,7 @@ const Footer = () => {
           <button
             className="mt-4 px-4 py-2 border border-green-400 text-white hover:bg-green-400 hover:text-black transition"
             onClick={() => {
-              window.location.href = `https://wa.me/918754262622?text=${encodeURIComponent(
+              window.location.href = `https://wa.me/918875522755?text=${encodeURIComponent(
                 "Hello, I would like to connect with you!"
               )}`;
             }}
